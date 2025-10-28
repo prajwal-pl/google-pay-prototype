@@ -1,4 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Card } from './Card';
@@ -6,6 +7,7 @@ import { RowItem } from './RowItem';
 import { TagBadge } from './TagBadge';
 
 export function ManageMoney() {
+    const router = useRouter();
     return (
         <View style={{ gap: 16 }}>
             <Text style={styles.heading}>Manage your money</Text>
@@ -40,7 +42,7 @@ export function ManageMoney() {
                 <View style={styles.divider} />
                 <RowItem title="See transaction history" icon="time-outline" />
                 <View style={styles.divider} />
-                <RowItem title="Check bank balance" icon="business-outline" />
+                <RowItem title="Check bank balance" icon="business-outline" onPress={() => router.push('/balance')} />
             </View>
         </View>
     );
