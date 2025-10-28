@@ -28,7 +28,7 @@ export function AvatarTile({ label, uri, fallback, onPress, style, ...rest }: Av
 
 const styles = StyleSheet.create({
     container: { width: 72, alignItems: 'center', gap: 6 },
-    avatar: { width: 44, height: 44, borderRadius: 22, backgroundColor: '#E6F4F9' },
+    avatar: { width: 60, height: 60, borderRadius: 50, backgroundColor: '#E6F4F9' },
     fallbackBg: { alignItems: 'center', justifyContent: 'center' },
     initial: { fontSize: 16, fontWeight: '600', color: '#3b82f6' },
     label: { fontSize: 11, color: '#11181C' },

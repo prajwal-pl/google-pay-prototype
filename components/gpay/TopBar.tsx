@@ -1,7 +1,7 @@
-import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { SearchBar } from './SearchBar';
 
 type TopBarProps = {
     onProfilePress?: () => void;
@@ -11,14 +11,9 @@ export function TopBar({ onProfilePress }: TopBarProps) {
     return (
         <SafeAreaView edges={['top']} style={styles.safeArea}>
             <View style={styles.container}>
-                <Pressable hitSlop={8}>
-                    <Ionicons name="scan-outline" size={22} color="#11181C" />
-                </Pressable>
-                <Image
-                    source={require('@/assets/design/G Pay.png')}
-                    style={{ width: 74, height: 22 }}
-                    resizeMode="contain"
-                />
+                <View style={styles.searchWrap}>
+                    <SearchBar />
+                </View>
                 <Pressable onPress={onProfilePress} hitSlop={8}>
                     <View style={styles.avatar}>
                         <Text style={styles.avatarText}>P</Text>
@@ -35,20 +30,21 @@ const styles = StyleSheet.create({
     },
     container: {
         paddingHorizontal: 16,
-        paddingVertical: 12,
+        paddingVertical: 10,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
     },
+    searchWrap: { flex: 1, marginRight: 12 },
     avatar: {
         width: 32,
         height: 32,
         borderRadius: 16,
-        backgroundColor: '#E6F4F9',
+        backgroundColor: '#663399',
         alignItems: 'center',
         justifyContent: 'center',
     },
-    avatarText: { fontSize: 14, fontWeight: '600', color: '#0a7ea4' },
+    avatarText: { fontSize: 14, fontWeight: '600', color: '#fff' },
 });
 
 export default TopBar;

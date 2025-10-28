@@ -1,12 +1,15 @@
+import { ActionTile } from '@/components/gpay/ActionTile';
 import { AvatarTile } from '@/components/gpay/AvatarTile';
 import { ManageMoney } from '@/components/gpay/ManageMoney';
 import { MerchantTile } from '@/components/gpay/MerchantTile';
+import { Pill } from '@/components/gpay/Pill';
+import { PromoBanner } from '@/components/gpay/PromoBanner';
 import { Section } from '@/components/gpay/Section';
 import { SectionSheet } from '@/components/gpay/SectionSheet';
 import { TopBar } from '@/components/gpay/TopBar';
 import { ThemedView } from '@/components/themed-view';
 import React from 'react';
-import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 
 export default function HomeScreen() {
   return (
@@ -14,11 +17,30 @@ export default function HomeScreen() {
       <ScrollView contentInsetAdjustmentBehavior="automatic" contentContainerStyle={styles.content}>
         <TopBar />
 
-        {/* Hero illustration */}
-        <Image source={require('@/assets/design/Cover.png')} resizeMode="cover" style={styles.cover} />
+        {/* Promo banner */}
+        <View style={{ paddingHorizontal: 16, marginTop: 8 }}>
+          <PromoBanner
+            title="Get your free CIBIL score instantly!"
+            image={require('@/assets/design/Cover.png')}
+          />
+        </View>
 
         {/* Sheet with content */}
         <SectionSheet style={styles.sheet}>
+          {/* Quick Actions */}
+          <View style={styles.actionsRowNew}>
+            <ActionTile style={styles.actionFlex} label={'Scan any\nQR code'} icon="qr-code-outline" variant="primary" />
+            <ActionTile style={styles.actionFlex} label={'Pay\nanyone'} icon="send-outline" variant="primary" />
+            <ActionTile style={styles.actionFlex} label={'Bank\ntransfer'} icon="business-outline" variant="primary" />
+            <ActionTile style={styles.actionFlex} label={'Mobile\nrecharge'} icon="phone-portrait-outline" variant="primary" />
+          </View>
+
+          {/* Pills row */}
+          <View style={styles.pillsRow}>
+            <Pill text="Activate UPI Lite" icon="add" variant="dashed" style={{ flexShrink: 0 }} />
+            <Pill text="UPI ID: prajwalpl096@oksbi" variant="solid" style={{ flex: 1, minWidth: 0 }} />
+          </View>
+
           {/* People Grid */}
           <Section title="People">
             <View style={styles.peopleGrid}>
@@ -46,13 +68,13 @@ export default function HomeScreen() {
           <ManageMoney />
         </SectionSheet>
 
-        {/* Floating New Payment */}
+        {/* Floating New Payment
         <View style={styles.fabBar}>
           <View style={styles.fab}>
             <Text style={styles.fabPlus}>＋</Text>
             <Text style={styles.fabText}>New payment</Text>
           </View>
-        </View>
+        </View> */}
       </ScrollView>
     </ThemedView>
   );
@@ -60,8 +82,22 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   content: { paddingBottom: 96, backgroundColor: '#fff' },
-  cover: { width: '100%', height: 140 },
   sheet: { marginTop: -12 },
+  actionsRowNew: {
+    paddingHorizontal: 16,
+    marginTop: 8,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    columnGap: 14,
+  },
+  actionFlex: { flex: 1, alignItems: 'center', maxWidth: 80 },
+  pillsRow: {
+    marginTop: 14,
+    paddingHorizontal: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+    columnGap: 12,
+  },
   peopleGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
