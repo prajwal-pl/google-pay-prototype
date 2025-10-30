@@ -18,7 +18,7 @@ export default function BalancePinScreen() {
         }
         if (k === 'submit') {
             // Check if PIN is correct
-            if (pin === '441321') {
+            if (pin === '741236') {
                 setAuthenticated(true);
             } else {
                 router.back();

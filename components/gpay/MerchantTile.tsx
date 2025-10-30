@@ -20,7 +20,7 @@ export function MerchantTile({ label, iconSource, onPress, style, ...rest }: Mer
 
 const styles = StyleSheet.create({
     container: { alignItems: 'center', width: 88 },
-    icon: { width: 44, height: 44, borderRadius: 22, backgroundColor: '#F2F2F2' },
+    icon: { width: 60, height: 60, borderRadius: 44, backgroundColor: '#F2F2F2' },
     label: { marginTop: 6, fontSize: 12, color: '#11181C', textAlign: 'center' },
 });
 
